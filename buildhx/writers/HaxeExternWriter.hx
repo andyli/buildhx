@@ -236,7 +236,7 @@ class HaxeExternWriter {
 			output.writeString ("\n");
 		}
 		
-		output.writeString ('@:native ("' + definition.className + '")\n');
+		output.writeString ('@:native ("' + (definition.nativeClassName == null ? definition.className : definition.nativeClassName) + '")\n');
 		output.writeString ('extern class ' + BuildHX.resolveClassName (definition.className));
 		
 		var parentClassName = "";
@@ -403,7 +403,14 @@ class HaxeExternWriter {
 			
 		}
 		
-		output += "var " + property.name + ":" + parser.resolveType (property.type) + ";\n";
+		output += "var " + property.name;
+		
+		if (property.getter != null || property.setter != null) {
+			output +=	"(" + (property.getter == null ? "default" : property.getter) + 
+						"," + (property.setter == null ? "default" : property.setter) + ")";
+		}
+		
+		output += ":" + parser.resolveType (property.type) + ";\n";
 		
 		if (property.hasConflict) {
 			
