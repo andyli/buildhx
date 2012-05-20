@@ -253,7 +253,7 @@ class SimpleParser extends AbstractParser {
 	}
 	
 	
-	public override function resolveImport (type:String):String {
+	public override function resolveImport (type:String):Array<String> {
 		
 		var type = resolveType (type, false);
 		
@@ -266,11 +266,11 @@ class SimpleParser extends AbstractParser {
 		
 		if (type.indexOf (".") == -1) {
 			
-			return null;
+			return [];
 			
 		} else {
 			
-			return type;
+			return [type];
 			
 		}
 		

@@ -333,7 +333,7 @@ class YUIDocParser extends SimpleParser
 	}
 	
 	
-	public override function resolveImport (type:String):String {
+	public override function resolveImport (type:String):Array<String> {
 		
 		var type = resolveType (type, false);
 		
@@ -364,7 +364,7 @@ class YUIDocParser extends SimpleParser
 		
 		if (type.indexOf (".") == -1) {
 			
-			return null;
+			return [];
 			
 		} else {
 			
@@ -378,7 +378,7 @@ class YUIDocParser extends SimpleParser
 				
 			}
 			
-			return  type;
+			return  [type];
 			
 		}
 		

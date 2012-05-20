@@ -413,14 +413,14 @@ class BuildHX {
 	}
 	
 	
-	public static function addImport (type:String, definition:ClassDefinition):Void {
-
-		if (type != null && type != "" && type.substr (-1) != "." && type != definition.className) {
-			
-			definition.imports.set (type, type);
-			
+	public static function addImport (types:Array<String>, definition:ClassDefinition):Void {
+		for (type in types) {
+			if (type != null && type != "" && type.substr (-1) != "." && type != definition.className) {
+				
+				definition.imports.set (type, type);
+				
+			}
 		}
-		
 	}
 	
 	

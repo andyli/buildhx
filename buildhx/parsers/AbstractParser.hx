@@ -33,9 +33,9 @@ class AbstractParser {
 	}
 	
 	
-	public function resolveImport (type:String):String {
+	public function resolveImport (type:String):Array<String> {
 		
-		return "";
+		return [];
 		
 	}
 	
